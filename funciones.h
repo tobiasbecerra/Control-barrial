@@ -13,11 +13,12 @@ struct SantaMonica {
 	char fechaEntrada[50];
 };
 
+SantaMonica sm;
+
 void añadirIngresoAuto() {
 
 	ofstream añadir_ingreso("visitas.dat", ios::binary | ios::app);
 	if (añadir_ingreso.is_open()) {
-		SantaMonica sm;
 
 		cout << "\nIngrese el nombre del visitante: ";
 		cin.ignore();
@@ -64,7 +65,6 @@ void buscarHistorialNombre() {
 
 	ifstream buscar_historial("visitas.dat", ios::binary);
 	if (buscar_historial.is_open()) {
-		SantaMonica sm;
 		while (buscar_historial.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
 			if (strcmp(sm.nombre, nombreBuscar) == 0) {
 				cout << "\n---------- INGRESOS ----------" << endl;
@@ -87,7 +87,6 @@ void buscarHistorialDNI() {
 
 	ifstream buscar_historialDNI("visitas.dat", ios::binary);
 	if (buscar_historialDNI.is_open()) {
-		SantaMonica sm;
 		while (buscar_historialDNI.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
 			if (sm.dni == dniBuscar) {
 				cout << "\n---------- INGRESOS ----------" << endl;
