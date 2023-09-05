@@ -24,7 +24,6 @@ void añadirIngresoAuto() {
 		cin.getline(sm.nombre, sizeof(sm.nombre));
 
 		cout << "\nIngrese el DNI del visitante: ";
-		cin.ignore(0, '\n');
 		cin >> sm.dni, sizeof(sm.dni);
 
 		cout << "\nIngrese la patente del vehiculo: ";
@@ -32,20 +31,21 @@ void añadirIngresoAuto() {
 		cin.getline(sm.patente, sizeof(sm.patente));
 
 		cout << "\nIngrese nombre de residente: ";
-		cin.ignore(0, '\n');
 		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
 
 		cout << "\nIngrese lote: ";
-		cin.ignore(0, '\n');
 		cin.getline(sm.lote, sizeof(sm.lote));
 
 		cout << "\nIngrese fecha de ingreso (dd/mm/aaaa): ";
-		cin.ignore(0, '\n');
 		cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
 
 		añadir_ingreso.write(reinterpret_cast<char*>(&sm), sizeof(sm));
 		añadir_ingreso.close();
 	}
+}
+
+void añadirIngresoPie() {
+	;
 }
 
 void buscarHistorialNombre() {
@@ -75,12 +75,12 @@ void buscarHistorialNombre() {
 void buscarHistorialDNI() {
 	int dniBuscar;
 	cout << "\nIngrese el DNI del visitante a buscar: ";
-	cin >> dniBuscar, sizeof(dniBuscar);
+	cin >> dniBuscar;
 
-	ifstream buscar_historial("visitas.dat", ios::binary);
-	if (buscar_historial.is_open()) {
+	ifstream buscar_historialDNI("visitas.dat", ios::binary);
+	if (buscar_historialDNI.is_open()) {
 		SantaMonica sm;
-		while (buscar_historial.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
+		while (buscar_historialDNI.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
 			if (sm.dni == dniBuscar) {
 				cout << "\n---------- INGRESOS ----------" << endl;
 				cout << "\nNombre: " << sm.nombre << endl;
@@ -91,6 +91,6 @@ void buscarHistorialDNI() {
 				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
 			}
 		}
-		buscar_historial.close();
+		buscar_historialDNI.close();
 	}
 }
