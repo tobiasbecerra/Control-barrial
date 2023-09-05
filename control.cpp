@@ -30,7 +30,7 @@ int main() {
 			}
 
 			if (opcion == 2) {
-				;
+				añadirIngresoPie();
 			}
 			break;
 		case 2:

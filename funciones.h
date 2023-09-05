@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
-
+aa
 struct SantaMonica {
 	char nombre[50];
 	char patente[50];
