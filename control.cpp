@@ -34,20 +34,34 @@ int main() {
 			}
 			break;
 		case 2:
+			int opcion2;
+
+			cout << "\n1. Con auto." << endl;
+			cout << "2. A pie." << endl;
+			cout << "Ingrese opcion: ";
+			cin >> opcion2;
+
+			if (opcion2 == 1) {
+				añadirEgresoAuto();
+			}
+
+			if (opcion2 == 2) {
+				añadirEgresoPie();
+			}
 			break;
 		case 3:
-			int opcion1;
+			int opcion3;
 
 			cout << "\n1. Buscar por DNI." << endl;
 			cout << "2. Buscar por nombre." << endl;
 			cout << "Ingrese opcion: ";
-			cin >> opcion1;
+			cin >> opcion3;
 
-			if (opcion1 == 1) {
+			if (opcion3 == 1) {
 				buscarHistorialDNI();
 			}
 
-			if (opcion1 == 2) {
+			if (opcion3 == 2) {
 				buscarHistorialNombre();
 			}
 			break;
