@@ -79,6 +79,7 @@ void buscarHistorialNombre() {
 				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
 			}
 		}
+		cout << "\n------------------------------" << endl;
 		buscar_historial.close();
 	}
 }
@@ -101,6 +102,7 @@ void buscarHistorialDNI() {
 				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
 			}
 		}
+		cout << "\n------------------------------" << endl;
 		buscar_historialDNI.close();
 	}
 }
