@@ -40,6 +40,8 @@ void añadirIngresoAuto() {
 		cout << "\nIngrese fecha de ingreso (dd/mm/aaaa): ";
 		cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
 
+		cout << "\n----------INGRESO CARGADO CORRECTAMENTE----------" << endl;
+
 		añadir_ingreso.seekp(0, ios::end);
 		añadir_ingreso.write(reinterpret_cast<char*>(&sm), sizeof(sm));
 		añadir_ingreso.close();
