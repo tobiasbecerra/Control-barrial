@@ -2,13 +2,18 @@
 #include <fstream>
 #include <string>
 #include "funciones.h"
+#include "colors.h"
+#include <locale.h>
 using namespace std;
 
 int main() {
+
+	setlocale(LC_ALL, "");
 	
 	int opc = 0;
 
 	while (opc != 11) {
+		cout << LGREEN << "\n----- BIENVENIDO AL BARRIO SANTAMONICA -----" << endl;
 		cout << "\n1. Añadir ingreso al barrio." << endl;
 		cout << "2. Añadir egreso del barrio." << endl;
 		cout << "3. Buscar historial de personas. " << endl;
