@@ -13,6 +13,8 @@ struct SantaMonica {
 	char nombreResidente[50];
 	char fechaEntrada[50];
 	char fechaEgreso[50];
+	char horaIngreso[50];
+	char horaEgreso[50];
 };
 
 SantaMonica sm;
@@ -63,6 +65,15 @@ bool esfechaEgresoValida(char* fechaEgreso) {
 
 }
 
+bool esHoraValida(char* horaSalida) {
+
+	for (int i = 0; horaSalida[i] != '\0'; ++i) {
+		if (!isdigit(horaSalida[i]) && horaSalida[i] != ':') {
+			return false;
+		}
+	}
+	return true;
+}
 
 void añadirIngresoAuto() {
 
@@ -221,6 +232,32 @@ void añadirIngresoAuto() {
 			}
 		}
 
+		cout << "\nIngrese hora de ingreso (hh:mm): ";
+		cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+		while (true) {
+
+			char* horasalidaLimpia = sm.horaIngreso;
+
+			while (*horasalidaLimpia && isspace(*horasalidaLimpia)) {
+				horasalidaLimpia++;
+			}
+
+			if (strlen(horasalidaLimpia) == 0) {
+				cout << "Error: La hora no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la hora nuevamente: ";
+				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+			}
+
+			else if (!esHoraValida(sm.horaIngreso)) {
+				cout << "ERROR: La hora en la que ingresó solo acepta el formato hh:mm con sus respectivos numeros: " << endl;
+				cout << "Por favor, ingresa la hora en la que ingresó nuevamente: ";
+				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\n----------INGRESO CARGADO CORRECTAMENTE----------" << endl;
 
@@ -418,6 +455,7 @@ void buscarHistorialNombre() {
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
 				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
+				cout << "Hora de ingreso: " << sm.horaIngreso << endl;
 			}
 		}
 		buscar_historial.close();
@@ -458,6 +496,7 @@ void buscarHistorialDNI() {
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
 				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
+				cout << "Hora de ingreso: " << sm.horaIngreso << endl;
 			}
 		}
 		buscar_historialDNI.close();
@@ -473,7 +512,7 @@ void buscarHistorialDNI() {
 				cout << "Patente: " << sm.patente << endl;
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
-				cout << "Fecha de ingreso: " << sm.fechaEgreso << endl;
+				cout << "Fecha de egreso: " << sm.fechaEgreso << endl;
 			}
 		}
 		cout << "\n------------------------------" << endl;
