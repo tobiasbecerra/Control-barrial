@@ -130,6 +130,7 @@
     <ClCompile Include="control.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="funciones de contro.h" />
     <ClInclude Include="funciones.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

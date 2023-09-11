@@ -2,22 +2,25 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
+#include "funciones de contro.h"
 using namespace std;
 
 struct SantaMonica {
 	char nombre[50];
 	char patente[50];
-	int dni;
+	char dni[50];
 	char lote[50];
 	char nombreResidente[50];
 	char fechaEntrada[50];
+	char fechaEgreso[50];
 };
 
 SantaMonica sm;
 
 void añadirIngresoAuto() {
 
-	ofstream añadir_ingreso("visitas.dat", ios::binary | ios::app);
+	ofstream añadir_ingreso("ingreso.dat", ios::binary | ios::app);
 	if (añadir_ingreso.is_open()) {
 
 		cout << "\nIngrese el nombre del visitante: ";
@@ -25,10 +28,9 @@ void añadirIngresoAuto() {
 		cin.getline(sm.nombre, sizeof(sm.nombre));
 
 		cout << "\nIngrese el DNI del visitante: ";
-		cin >> sm.dni, sizeof(sm.dni);
+		cin.getline(sm.dni, sizeof(sm.dni));
 
 		cout << "\nIngrese la patente del vehiculo: ";
-		cin.ignore();
 		cin.getline(sm.patente, sizeof(sm.patente));
 
 		cout << "\nIngrese nombre de residente: ";
@@ -48,11 +50,40 @@ void añadirIngresoAuto() {
 	}
 }
 
-void añadirIngresoPie() {
-	;
+void añadirEgresoAuto() {
+
+	ofstream añadir_egreso("egreso.dat", ios::binary);
+	if (añadir_egreso.is_open()) {
+
+		cout << "\nIngrese el nombre del visitante: ";
+		cin.ignore();
+		cin.getline(sm.nombre, sizeof(sm.nombre));
+		controlarNombreEgreso();
+
+		cout << "\nIngrese el DNI del visitante: ";
+		cin.getline(sm.dni, sizeof(sm.dni));
+
+		cout << "\nIngrese la patente del vehiculo: ";
+		cin.getline(sm.patente, sizeof(sm.patente));
+
+		cout << "\nIngrese nombre de residente: ";
+		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+
+		cout << "\nIngrese lote: ";
+		cin.getline(sm.lote, sizeof(sm.lote));
+
+		cout << "\nIngrese fecha de egreso: ";
+		cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+
+		cout << "\n----------INGRESO CARGADO CORRECTAMENTE----------" << endl;
+
+		añadir_egreso.seekp(0, ios::end);
+		añadir_egreso.write(reinterpret_cast<char*>(&sm), sizeof(sm));
+		añadir_egreso.close();
+	}
 }
 
-void añadirEgresoAuto() {
+void añadirIngresoPie() {
 	;
 }
 
@@ -66,7 +97,7 @@ void buscarHistorialNombre() {
 	cin.ignore();
 	cin.getline(nombreBuscar, sizeof(nombreBuscar));
 
-	ifstream buscar_historial("visitas.dat", ios::binary);
+	ifstream buscar_historial("ingreso.dat", ios::binary);
 	if (buscar_historial.is_open()) {
 		cout << "\n---------- INGRESOS ----------" << endl;
 		while (buscar_historial.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
@@ -85,15 +116,15 @@ void buscarHistorialNombre() {
 }
 
 void buscarHistorialDNI() {
-	int dniBuscar;
+	char dniBuscar[50];
 	cout << "\nIngrese el DNI del visitante a buscar: ";
 	cin >> dniBuscar;
 
-	ifstream buscar_historialDNI("visitas.dat", ios::binary);
+	ifstream buscar_historialDNI("ingreso.dat", ios::binary);
 	if (buscar_historialDNI.is_open()) {
 		cout << "\n---------- INGRESOS ----------" << endl;
 		while (buscar_historialDNI.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
-			if (sm.dni == dniBuscar) {
+			if (strcmp(sm.dni, dniBuscar) == 0) {
 				cout << "\nNombre: " << sm.nombre << endl;
 				cout << "DNI: " << sm.dni << endl;
 				cout << "Patente: " << sm.patente << endl;
