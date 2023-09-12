@@ -16,7 +16,7 @@ int main() {
 		cout << LGREEN << "\n----- BIENVENIDO AL BARRIO SANTAMONICA -----" << endl;
 		cout << "\n1. Añadir ingreso al barrio." << endl;
 		cout << "2. Añadir egreso del barrio." << endl;
-		cout << "3. Buscar historial de personas. " << endl;
+		cout << "3. Buscar registro de personas. " << endl;
 		cout << "4. Salir del programa." << endl;
 		cout << "Ingrese opcion: ";
 		cin >> opc;
