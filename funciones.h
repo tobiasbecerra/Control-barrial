@@ -816,6 +816,7 @@ void buscarHistorialNombre() {
 	cin.getline(nombreBuscar, sizeof(nombreBuscar));
 
 	ifstream buscar_historial("ingreso.dat", ios::binary);
+	ifstream buscar_historial_pie("ingresopie.dat", ios::binary);
 	if (buscar_historial.is_open()) {
 		cout << "\n---------- INGRESOS ----------" << endl;
 		while (buscar_historial.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
@@ -829,7 +830,20 @@ void buscarHistorialNombre() {
 				cout << "Hora de ingreso: " << sm.horaIngreso << endl;
 			}
 		}
+
+		while (buscar_historial_pie.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
+			if (strcmp(sm.nombre, nombreBuscar) == 0) {
+				cout << "\nNombre: " << sm.nombre << endl;
+				cout << "DNI: " << sm.dni << endl;
+				cout << "Nombre de residente: " << sm.nombreResidente << endl;
+				cout << "Lote de residente: " << sm.lote << endl;
+				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
+				cout << "Hora de ingreso: " << sm.horaIngreso << endl;
+			}
+		}
+
 		buscar_historial.close();
+		buscar_historial_pie.close();
 	}
 
 	ifstream buscar_historial_nombre_egreso("egreso.dat", ios::binary);
@@ -860,6 +874,7 @@ void buscarHistorialNombre() {
 		}
 		cout << "\n------------------------------" << endl;
 		buscar_historial_nombre_egreso.close();
+		buscar_historial_nombre_egreso_pie.close();
 	}
 }
 
@@ -868,6 +883,7 @@ void buscarHistorialDNI() {
 	cout << "\nIngrese el DNI del visitante a buscar: ";
 	cin >> dniBuscar;
 
+	
 	ifstream buscar_historialDNI("ingreso.dat", ios::binary);
 	if (buscar_historialDNI.is_open()) {
 		cout << "\n---------- INGRESOS ----------" << endl;
@@ -883,9 +899,22 @@ void buscarHistorialDNI() {
 			}
 		}
 		buscar_historialDNI.close();
+
+		ifstream buscar_historial_dni_pie("ingresopie.dat", ios::binary);
+		while (buscar_historial_dni_pie.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
+			if (strcmp(sm.dni, dniBuscar) == 0) {
+				cout << "\nNombre: " << sm.nombre << endl;
+				cout << "DNI: " << sm.dni << endl;
+				cout << "Nombre de residente: " << sm.nombreResidente << endl;
+				cout << "Lote de residente: " << sm.lote << endl;
+				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
+				cout << "Hora de ingreso: " << sm.horaIngreso << endl;
+			}
+		}
+		buscar_historial_dni_pie.close();
 	}
 
-	ifstream buscar_historial_dni_egreso("egreso.dat", ios::binary);
+	ifstream buscar_historial_dni_egreso("egresopie.dat", ios::binary);
 	if (buscar_historial_dni_egreso.is_open()) {
 		cout << "\n---------- EGRESOS ----------" << endl;
 		while (buscar_historial_dni_egreso.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
@@ -899,7 +928,20 @@ void buscarHistorialDNI() {
 				cout << "Hora de egreso: " << sm.horaEgreso << endl;
 			}
 		}
-		cout << "\n------------------------------" << endl;
 		buscar_historial_dni_egreso.close();
+
+		ifstream buscar_historial_dni_pie_egreso("egresopie.dat", ios::binary);
+		while (buscar_historial_dni_pie_egreso.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
+			if (strcmp(sm.dni, dniBuscar) == 0) {
+				cout << "\nNombre: " << sm.nombre << endl;
+				cout << "DNI: " << sm.dni << endl;
+				cout << "Nombre de residente: " << sm.nombreResidente << endl;
+				cout << "Lote de residente: " << sm.lote << endl;
+				cout << "Fecha de egreso: " << sm.fechaEgreso << endl;
+				cout << "Hora de egreso: " << sm.horaEgreso << endl;
+			}
+		}
+		cout << "\n------------------------------" << endl;
+		buscar_historial_dni_pie_egreso.close();
 	}
 }
