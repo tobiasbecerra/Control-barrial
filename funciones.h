@@ -460,12 +460,65 @@ void añadirEgresoAuto() {
 }
 
 void añadirIngresoPie() {
-	;
+	ofstream añadir_ingreso_pie("ingresopie.dat", ios::binary | ios::app);
+	if (añadir_ingreso_pie.is_open()) {
+		cout << "\nIngrese el nombre del visitante: ";
+		cin.ignore();
+		cin.getline(sm.nombre, sizeof(sm.nombre));
+
+		cout << "\nIngrese el DNI del visitante: ";
+		cin.getline(sm.dni, sizeof(sm.dni));
+
+		cout << "\nIngrese el nombre del residente: ";
+		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+
+		cout << "\nIngrese lote del residente: ";
+		cin.getline(sm.lote, sizeof(sm.lote));
+
+		cout << "\nFecha de ingreso (dd/mm/aaaa): ";
+		cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
+
+		cout << "\nHora de ingreso (hh:mm): ";
+		cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+
+		cout << "\n----------INGRESO CARGADO CORRECTAMENTE----------" << endl;
+
+		añadir_ingreso_pie.seekp(0, ios::end);
+		añadir_ingreso_pie.write(reinterpret_cast<char*>(&sm), sizeof(sm));
+		añadir_ingreso_pie.close();
+	}
 }
 
 void añadirEgresoPie() {
-	;
+	ofstream añadir_egreso_pie("egresopie.dat", ios::binary | ios::app);
+	if (añadir_egreso_pie.is_open()) {
+		cout << "\nIngrese el nombre del visitante: ";
+		cin.ignore();
+		cin.getline(sm.nombre, sizeof(sm.nombre));
+
+		cout << "\nIngrese el DNI del visitante: ";
+		cin.getline(sm.dni, sizeof(sm.dni));
+
+		cout << "\nIngrese el nombre del residente: ";
+		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+
+		cout << "\nIngrese lote del residente: ";
+		cin.getline(sm.lote, sizeof(sm.lote));
+
+		cout << "\nFecha de engreso (dd/mm/aaaa): ";
+		cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+
+		cout << "\nHora de egreso (hh:mm): ";
+		cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+
+		cout << "\n----------EGRESO CARGADO CORRECTAMENTE----------" << endl;
+
+		añadir_egreso_pie.seekp(0, ios::end);
+		añadir_egreso_pie.write(reinterpret_cast<char*>(&sm), sizeof(sm));
+		añadir_egreso_pie.close();
+	}
 }
+
 
 void buscarHistorialNombre() {
 	char nombreBuscar[50];
@@ -508,7 +561,6 @@ void buscarHistorialNombre() {
 		buscar_historial_nombre_egreso.close();
 	}
 }
-
 
 void buscarHistorialDNI() {
 	char dniBuscar[50];

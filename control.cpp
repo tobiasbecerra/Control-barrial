@@ -38,6 +38,7 @@ int main() {
 				añadirIngresoPie();
 			}
 			break;
+		
 		case 2:
 			int opcion2;
 
@@ -54,6 +55,7 @@ int main() {
 				añadirEgresoPie();
 			}
 			break;
+	
 		case 3:
 			int opcion3;
 
@@ -70,6 +72,7 @@ int main() {
 				buscarHistorialNombre();
 			}
 			break;
+		
 		case 4:
 			return 0;
 			break;
