@@ -15,10 +15,10 @@ int main() {
 	while (opc != 11) {
 		cout << LGREEN << "\n----- BIENVENIDO AL BARRIO SANTAMONICA -----" << endl;
 		cout << "\n1. Añadir ingreso al barrio." << endl;
-		cout << "2. Añadir egreso del barrio." << endl;
-		cout << "3. Buscar registro de personas. " << endl;
-		cout << "4. Salir del programa." << endl;
-		cout << "Ingrese opcion: ";
+		cout << "\n2. Añadir egreso del barrio." << endl;
+		cout << "\n3. Buscar registro de personas. " << endl;
+		cout << "\n4. Salir del programa." << endl;
+		cout << "\nIngrese opcion: ";
 		cin >> opc;
 
 		switch (opc) {
@@ -26,8 +26,8 @@ int main() {
 			int opcion;
 
 			cout << "\n1. Con auto." << endl;
-			cout << "2. A pie." << endl;
-			cout << "Ingrese opcion: ";
+			cout << "\n2. A pie." << endl;
+			cout << "\nIngrese opcion: ";
 			cin >> opcion;
 
 			if (opcion == 1) {
@@ -43,8 +43,8 @@ int main() {
 			int opcion2;
 
 			cout << "\n1. Con auto." << endl;
-			cout << "2. A pie." << endl;
-			cout << "Ingrese opcion: ";
+			cout << "\n2. A pie." << endl;
+			cout << "\nIngrese opcion: ";
 			cin >> opcion2;
 
 			if (opcion2 == 1) {
@@ -60,8 +60,8 @@ int main() {
 			int opcion3;
 
 			cout << "\n1. Buscar por DNI." << endl;
-			cout << "2. Buscar por nombre." << endl;
-			cout << "Ingrese opcion: ";
+			cout << "\n2. Buscar por nombre." << endl;
+			cout << "\nIngrese opcion: ";
 			cin >> opcion3;
 
 			if (opcion3 == 1) {
