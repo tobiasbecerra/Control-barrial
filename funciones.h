@@ -75,6 +75,8 @@ bool esHoraValida(char* horaSalida) {
 	return true;
 }
 
+//Estas funciones bool fueron creadas para realizar controles de caracteres en las funciones utilizadas en nuestro programa
+
 void añadirIngresoAuto() {
 
 	ofstream añadir_ingreso("ingreso.dat", ios::binary | ios::app);
@@ -236,13 +238,13 @@ void añadirIngresoAuto() {
 		cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
 		while (true) {
 
-			char* horasalidaLimpia = sm.horaIngreso;
+			char* horaEntradaLimpia = sm.horaIngreso;
 
-			while (*horasalidaLimpia && isspace(*horasalidaLimpia)) {
-				horasalidaLimpia++;
+			while (*horaEntradaLimpia && isspace(*horaEntradaLimpia)) {
+				horaEntradaLimpia++;
 			}
 
-			if (strlen(horasalidaLimpia) == 0) {
+			if (strlen(horaEntradaLimpia) == 0) {
 				cout << "Error: La hora no puede estar vacia." << endl;
 				cout << "Por favor, ingrese la hora nuevamente: ";
 				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
@@ -411,7 +413,7 @@ void añadirEgresoAuto() {
 				cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
 			}
 
-			else if (!esfechaEgresoValida(sm.fechaEntrada)) {
+			else if (!esfechaEgresoValida(sm.fechaEgreso)) {
 				cout << "ERROR: La fecha en la que salió solo acepta el formato (dd/mm/aaaa): " << endl;
 				cout << "Por favor, ingresa la fecha en la que salió nuevamente: ";
 				cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
