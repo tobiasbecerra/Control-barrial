@@ -410,7 +410,7 @@ void añadirEgresoAuto() {
 			if (strlen(fechaEgresoLimpia) == 0) {
 				cout << "Error: La fecha no puede estar vacia." << endl;
 				cout << "Por favor, ingrese la fecha nuevamente: ";
-				cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
+				cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
 			}
 
 			else if (!esfechaEgresoValida(sm.fechaEgreso)) {
