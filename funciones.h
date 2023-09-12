@@ -833,6 +833,7 @@ void buscarHistorialNombre() {
 	}
 
 	ifstream buscar_historial_nombre_egreso("egreso.dat", ios::binary);
+	ifstream buscar_historial_nombre_egreso_pie("egresopie.dat", ios::binary);
 	if (buscar_historial_nombre_egreso.is_open()) {
 		cout << "\n---------- EGRESOS ----------" << endl;
 		while (buscar_historial_nombre_egreso.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
@@ -843,6 +844,17 @@ void buscarHistorialNombre() {
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
 				cout << "Fecha de engreso: " << sm.fechaEgreso << endl;
+				cout << "Hora de egreso: " << sm.horaEgreso << endl;
+			}
+		}
+
+		while (buscar_historial_nombre_egreso_pie.read(reinterpret_cast<char*>(&sm), sizeof(sm))) {
+			if (strcmp(sm.nombre, nombreBuscar) == 0) {
+				cout << "\nNombre: " << sm.nombre << endl;
+				cout << "DNI: " << sm.dni << endl;
+				cout << "Nombre de residente: " << sm.nombreResidente << endl;
+				cout << "Lote de residente: " << sm.lote << endl;
+				cout << "Fecha de egreso: " << sm.fechaEgreso << endl;
 				cout << "Hora de egreso: " << sm.horaEgreso << endl;
 			}
 		}
