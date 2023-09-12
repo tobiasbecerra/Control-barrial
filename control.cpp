@@ -10,10 +10,22 @@ int main() {
 
 	setlocale(LC_ALL, "");
 	
+	string nombreUsuario;
+	string contaseñaUsuario;
+
+	cout << LGREEN << "Iniciando sesion..." << endl;
+
+	cout << "\nIngrese usuario: ";
+	getline(cin, nombreUsuario);
+
+	cout << "\nIngrese contraseña: ";
+	getline(cin, contaseñaUsuario);
+
 	int opc = 0;
 
-	while (opc != 11) {
-		cout << LGREEN << "\n----- BIENVENIDO AL BARRIO SANTAMONICA -----" << endl;
+	while (opc != 4) {
+		cout << LGREEN << "\n----- BIENVENIDO AL BARRIO SANTAMONICA -----";
+		cout << "\t\t\tSesión iniciada por: " << nombreUsuario << endl;
 		cout << "\n1. Añadir ingreso al barrio." << endl;
 		cout << "\n2. Añadir egreso del barrio." << endl;
 		cout << "\n3. Buscar registro de personas. " << endl;
@@ -72,11 +84,8 @@ int main() {
 				buscarHistorialNombre();
 			}
 			break;
-		
-		case 4:
-			return 0;
-			break;
 		}
+		cout << "\nSALIENDO DEL PROGRAMA...";
 	}
 	return 0;
 }
