@@ -222,7 +222,7 @@ void añadirIngresoAuto() {
 			}
 
 			else if (!esfechaEgresoValida(sm.fechaEntrada)) {
-				cout << "ERROR: La fecha en la que entro solo acepta el formato dd/mm/aaaa, con sus respectivos numeros: " << endl;
+				cout << "¡ERROR!: La fecha en la que entró solo acepta el formato (dd/mm/aaaa): " << endl;
 				cout << "Por favor, ingresa la fecha en la que entro nuevamente: ";
 				cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
 			}
@@ -249,7 +249,7 @@ void añadirIngresoAuto() {
 			}
 
 			else if (!esHoraValida(sm.horaIngreso)) {
-				cout << "ERROR: La hora en la que ingresó solo acepta el formato hh:mm con sus respectivos numeros: " << endl;
+				cout << "ERROR: La hora en la que ingresó solo acepta el formato (hh:mm): " << endl;
 				cout << "Por favor, ingresa la hora en la que ingresó nuevamente: ";
 				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
 			}
@@ -395,7 +395,7 @@ void añadirEgresoAuto() {
 			}
 		}
 
-		cout << "\nIngrese fecha de egreso: ";
+		cout << "\nIngrese fecha de egreso (dd/mm/aaaa): ";
 		cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
 		while (true) {
 
@@ -412,9 +412,38 @@ void añadirEgresoAuto() {
 			}
 
 			else if (!esfechaEgresoValida(sm.fechaEntrada)) {
-				cout << "ERROR: La fecha en la que salio solo acepta el formato dd/mm/aaaa, con sus respectivos numeros: " << endl;
-				cout << "Por favor, ingresa la fecha en la que salio nuevamente: ";
+				cout << "ERROR: La fecha en la que salió solo acepta el formato (dd/mm/aaaa): " << endl;
+				cout << "Por favor, ingresa la fecha en la que salió nuevamente: ";
 				cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+			}
+
+			else {
+				break;
+			}
+		}
+
+		cout << "\nIngrese hora de egreso (hh:mm): "
+			;
+		cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+		
+		while (true) {
+
+			char* horasalidaLimpia = sm.horaEgreso;
+
+			while (*horasalidaLimpia && isspace(*horasalidaLimpia)) {
+				horasalidaLimpia++;
+			}
+
+			if (strlen(horasalidaLimpia) == 0) {
+				cout << "Error: La hora no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la hora nuevamente: ";
+				cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+			}
+
+			else if (!esHoraValida(sm.horaEgreso)) {
+				cout << "ERROR: La hora en la que egresó solo acepta el formato (hh:mm): " << endl;
+				cout << "Por favor, ingresa la hora en la que egresó nuevamente: ";
+				cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
 			}
 
 			else {
@@ -471,7 +500,8 @@ void buscarHistorialNombre() {
 				cout << "Patente: " << sm.patente << endl;
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
-				cout << "Fecha de ingreso: " << sm.fechaEntrada << endl;
+				cout << "Fecha de engreso: " << sm.fechaEgreso << endl;
+				cout << "Hora de egreso: " << sm.horaEgreso << endl;
 			}
 		}
 		cout << "\n------------------------------" << endl;
@@ -513,6 +543,7 @@ void buscarHistorialDNI() {
 				cout << "Nombre de residente: " << sm.nombreResidente << endl;
 				cout << "Lote de residente: " << sm.lote << endl;
 				cout << "Fecha de egreso: " << sm.fechaEgreso << endl;
+				cout << "Hora de egreso: " << sm.horaEgreso << endl;
 			}
 		}
 		cout << "\n------------------------------" << endl;
