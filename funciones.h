@@ -519,7 +519,6 @@ void añadirEgresoPie() {
 	}
 }
 
-
 void buscarHistorialNombre() {
 	char nombreBuscar[50];
 	cout << "\nIngrese el nombre del visitante a buscar: ";
