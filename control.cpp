@@ -85,7 +85,7 @@ int main() {
 			}
 			break;
 		}
-		cout << "\nSALIENDO DEL PROGRAMA...";
 	}
+	cout << "\nSALIENDO DEL PROGRAMA...\n";
 	return 0;
 }

@@ -468,20 +468,164 @@ void añadirIngresoPie() {
 		cin.ignore();
 		cin.getline(sm.nombre, sizeof(sm.nombre));
 
+		while (true) {
+
+			char* nombreLimpio = sm.nombre;
+			while (*nombreLimpio && isspace(*nombreLimpio)) {
+				nombreLimpio++;
+			}
+
+			if (strlen(nombreLimpio) == 0) {
+				cout << "Error: El nombre no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombre, sizeof(sm.nombre));
+			}
+
+			else if (!esNombreValido(nombreLimpio)) {
+				cout << "Error: Debes ingresar un nombre valido sin numeros ni simbolos." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombre, sizeof(sm.nombre));
+			}
+
+			else {
+				break;
+			}
+		}
+
 		cout << "\nIngrese el DNI del visitante: ";
 		cin.getline(sm.dni, sizeof(sm.dni));
+
+		while (true) {
+
+			char* dniLimpio = sm.dni;
+
+			while (*dniLimpio && isspace(*dniLimpio)) {
+				dniLimpio++;
+			}
+
+			if (strlen(dniLimpio) == 0) {
+				cout << "Error: El dni no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el dni nuevamente: ";
+				cin.getline(sm.dni, sizeof(sm.dni));
+			}
+
+			else if (!esDniValido(sm.dni)) {
+				cout << "ERROR: El DNI solo acepta numeros sin espacios." << endl;
+				cout << "Por favor, ingresa el DNI nuevamente: ";
+				cin.getline(sm.dni, sizeof(sm.dni));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\nIngrese el nombre del residente: ";
 		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
 
+		while (true) {
+
+			char* nombreresidenteLimpio = sm.nombreResidente;
+
+			while (*nombreresidenteLimpio && isspace(*nombreresidenteLimpio)) {
+				nombreresidenteLimpio++;
+			}
+
+			if (strlen(nombreresidenteLimpio) == 0) {
+				cout << "Error: El nombre del residente no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+			}
+
+			else if (!esNombreresidenteValido(nombreresidenteLimpio)) {
+				cout << "Error: Debes ingresar un nombre valido sin numeros ni simbolos." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+			}
+
+			else {
+				break;
+			}
+		}
+
 		cout << "\nIngrese lote del residente: ";
 		cin.getline(sm.lote, sizeof(sm.lote));
+
+		while (true) {
+
+			char* loteLimpio = sm.lote;
+
+			while (*loteLimpio && isspace(*loteLimpio)) {
+				loteLimpio++;
+			}
+
+			if (strlen(loteLimpio) == 0) {
+				cout << "Error: El lote no puede estar vacio." << endl;
+				cout << "Por favor, ingrese el lote nuevamente: ";
+				cin.getline(sm.lote, sizeof(sm.lote));
+			}
+
+			else
+			{
+				break;
+			}
+		}
 
 		cout << "\nFecha de ingreso (dd/mm/aaaa): ";
 		cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
 
+		while (true) {
+
+			char* fechaIgresoLimpia = sm.fechaEntrada;
+
+			while (*fechaIgresoLimpia && isspace(*fechaIgresoLimpia)) {
+				fechaIgresoLimpia++;
+			}
+
+			if (strlen(fechaIgresoLimpia) == 0) {
+				cout << "Error: La fecha no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la fecha nuevamente: ";
+				cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
+			}
+
+			else if (!esfechaEgresoValida(sm.fechaEntrada)) {
+				cout << "¡ERROR!: La fecha en la que entró solo acepta el formato (dd/mm/aaaa): " << endl;
+				cout << "Por favor, ingresa la fecha en la que entro nuevamente: ";
+				cin.getline(sm.fechaEntrada, sizeof(sm.fechaEntrada));
+			}
+
+			else {
+				break;
+			}
+		}
+
 		cout << "\nHora de ingreso (hh:mm): ";
 		cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+
+		while (true) {
+
+			char* horaEntradaLimpia = sm.horaIngreso;
+
+			while (*horaEntradaLimpia && isspace(*horaEntradaLimpia)) {
+				horaEntradaLimpia++;
+			}
+
+			if (strlen(horaEntradaLimpia) == 0) {
+				cout << "Error: La hora no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la hora nuevamente: ";
+				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+			}
+
+			else if (!esHoraValida(sm.horaIngreso)) {
+				cout << "ERROR: La hora en la que ingresó solo acepta el formato (hh:mm): " << endl;
+				cout << "Por favor, ingresa la hora en la que ingresó nuevamente: ";
+				cin.getline(sm.horaIngreso, sizeof(sm.horaIngreso));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\n----------INGRESO CARGADO CORRECTAMENTE----------" << endl;
 
@@ -498,20 +642,164 @@ void añadirEgresoPie() {
 		cin.ignore();
 		cin.getline(sm.nombre, sizeof(sm.nombre));
 
+		while (true) {
+
+			char* nombreLimpio = sm.nombre;
+			while (*nombreLimpio && isspace(*nombreLimpio)) {
+				nombreLimpio++;
+			}
+
+			if (strlen(nombreLimpio) == 0) {
+				cout << "Error: El nombre no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombre, sizeof(sm.nombre));
+			}
+
+			else if (!esNombreValido(nombreLimpio)) {
+				cout << "Error: Debes ingresar un nombre valido sin numeros ni simbolos." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombre, sizeof(sm.nombre));
+			}
+
+			else {
+				break;
+			}
+		}
+
 		cout << "\nIngrese el DNI del visitante: ";
 		cin.getline(sm.dni, sizeof(sm.dni));
 
+		while (true) {
+
+			char* dniLimpio = sm.dni;
+
+			while (*dniLimpio && isspace(*dniLimpio)) {
+				dniLimpio++;
+			}
+
+			if (strlen(dniLimpio) == 0) {
+				cout << "Error: El dni no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el dni nuevamente: ";
+				cin.getline(sm.dni, sizeof(sm.dni));
+			}
+
+			else if (!esDniValido(sm.dni)) {
+				cout << "ERROR: El DNI solo acepta numeros sin espacios." << endl;
+				cout << "Por favor, ingresa el DNI nuevamente: ";
+				cin.getline(sm.dni, sizeof(sm.dni));
+			}
+
+			else {
+				break;
+			}
+		}
+
 		cout << "\nIngrese el nombre del residente: ";
 		cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+		
+		while (true) {
+
+			char* nombreresidenteLimpio = sm.nombreResidente;
+
+			while (*nombreresidenteLimpio && isspace(*nombreresidenteLimpio)) {
+				nombreresidenteLimpio++;
+			}
+
+			if (strlen(nombreresidenteLimpio) == 0) {
+				cout << "Error: El nombre del residente no puede estar vacio." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+			}
+
+			else if (!esNombreresidenteValido(nombreresidenteLimpio)) {
+				cout << "Error: Debes ingresar un nombre valido sin numeros ni simbolos." << endl;
+				cout << "Por favor, ingresa el nombre nuevamente: ";
+				cin.getline(sm.nombreResidente, sizeof(sm.nombreResidente));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\nIngrese lote del residente: ";
 		cin.getline(sm.lote, sizeof(sm.lote));
 
-		cout << "\nFecha de engreso (dd/mm/aaaa): ";
+		while (true) {
+
+			char* loteLimpio = sm.lote;
+
+			while (*loteLimpio && isspace(*loteLimpio)) {
+				loteLimpio++;
+			}
+
+			if (strlen(loteLimpio) == 0) {
+				cout << "Error: El lote no puede estar vacio." << endl;
+				cout << "Por favor, ingrese el lote nuevamente: ";
+				cin.getline(sm.lote, sizeof(sm.lote));
+			}
+
+			else
+			{
+				break;
+			}
+		}
+
+		cout << "\nFecha de egreso (dd/mm/aaaa): ";
 		cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+
+		while (true) {
+
+			char* fechaEgresoLimpia = sm.fechaEgreso;
+
+			while (*fechaEgresoLimpia && isspace(*fechaEgresoLimpia)) {
+				fechaEgresoLimpia++;
+			}
+
+			if (strlen(fechaEgresoLimpia) == 0) {
+				cout << "Error: La fecha no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la fecha nuevamente: ";
+				cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+			}
+
+			else if (!esfechaEgresoValida(sm.fechaEgreso)) {
+				cout << "¡ERROR!: La fecha en la que salió solo acepta el formato (dd/mm/aaaa): " << endl;
+				cout << "Por favor, ingresa la fecha en la que salió nuevamente: ";
+				cin.getline(sm.fechaEgreso, sizeof(sm.fechaEgreso));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\nHora de egreso (hh:mm): ";
 		cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+
+		while (true) {
+
+			char* horaEgresoLimpia = sm.horaEgreso;
+
+			while (*horaEgresoLimpia && isspace(*horaEgresoLimpia)) {
+				horaEgresoLimpia++;
+			}
+
+			if (strlen(horaEgresoLimpia) == 0) {
+				cout << "Error: La hora no puede estar vacia." << endl;
+				cout << "Por favor, ingrese la hora nuevamente: ";
+				cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+			}
+
+			else if (!esHoraValida(sm.horaEgreso)) {
+				cout << "ERROR: La hora en la que egresó solo acepta el formato (hh:mm): " << endl;
+				cout << "Por favor, ingresa la hora en la que egresó nuevamente: ";
+				cin.getline(sm.horaEgreso, sizeof(sm.horaEgreso));
+			}
+
+			else {
+				break;
+			}
+		}
 
 		cout << "\n----------EGRESO CARGADO CORRECTAMENTE----------" << endl;
 
